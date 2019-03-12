@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    section {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .s1 {
+        background-color: rgb(237, 248, 79);
+        height: 120vh;
+    }
+
+    .s2 {
+        background-color: rgb(108, 244, 253);
+        height: 120vh;
+    }
+
+    .s3 {
+        background-color: rgb(248, 79, 226);
+        height: 120vh;
+    }
+
+    .s4 {
+        background-color: rgb(248, 141, 79);
+        height: 120vh;
+    }
+
+    nav {
+        position: fixed;
+        bottom: 0;
+        left: 40%;
+        right: 40%;
+        height: 80px;
+        /* background-color: rgb(233, 71, 120); */
+    }
+
+    nav ul {
+        display: flex;
+        height: 100%;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    ul li {
+        height: 15px;
+        width: 15px;
+        background-color: #fff;
+        border-radius: 50%;
+        /* box-shadow: 0 0 0 3px white; */
+        transition: .2s;
+    }
+
+    .dot1 {
+        background-color: white
+    }
+
+    .dot2 {
+        background-color: white
+    }
+
+    .dot3 {
+        background-color: white
+    }
+
+    .dot4 {
+        background-color: white
+    }
+
+    .active {
+        /* box-shadow: 0 0 0 3px white; */
+        height: 30px;
+        width: 30px;
+    }
+</style>
+
+<body>
+    <section class="s1"></section>
+    <section class="s2"></section>
+    <section class="s3"></section>
+    <section class="s4"></section>
+    <nav>
+        <ul>
+            <li class="dot1"></li>
+            <li class="dot2"></li>
+            <li class="dot3"></li>
+            <li class="dot4"></li>
+        </ul>
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <script>
+        function changeDot() {
+            const scrollValue = $(window).scrollTop();
+            const heights2 = $('.s2').offset().top;
+            const heights3 = $('.s3').offset().top;
+            const heights4 = $('.s4').offset().top;
+
+            const pxel = 300;
+
+            // console.log(scrollValue.toFixed(), heights2.toFixed(), heights3.toFixed(), heights4.toFixed())
+
+            if (scrollValue < (heights2 - pxel)) {
+                $('ul li').not('.dot1').removeClass('active');
+                $('.dot1').addClass('active');
+            } else if (scrollValue < (heights3 - pxel)) {
+                $('ul li').not('.dot2').removeClass('active');
+                $('.dot2').addClass('active');
+            } else if (scrollValue < (heights4 - pxel)) {
+                $('ul li').not('.dot3').removeClass('active');
+                $('.dot3').addClass('active');
+            } else {
+                $('ul li').not('.dot4').removeClass('active');
+                $('.dot4').addClass('active');
+            }
+        }
+        $(window).on('scroll click', changeDot)
+
+
+
+
+        $(".dot1").click(function () {
+            $('html,body').animate({
+                    scrollTop: $(".s1").offset().top
+                },
+                'slow');
+        });
+
+        $(".dot2").click(function () {
+            $('html,body').animate({
+                    scrollTop: $(".s2").offset().top
+                },
+                'slow');
+        });
+
+        $(".dot3").click(function () {
+            $('html,body').animate({
+                    scrollTop: $(".s3").offset().top
+                },
+                'slow');
+        });
+
+        $(".dot4").click(function () {
+            $('html,body').animate({
+                    scrollTop: $(".s4").offset().top
+                },
+                'slow');
+        });
+    </script>
+
+</body>
+
+</html>
